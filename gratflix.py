@@ -18,12 +18,14 @@ class WebsiteConfig:
                  searchURLPattern: str,
                  itemSelector: str,
                  linkSelector: str,
-                 titleSelector: str):
+                 titleSelector: str,
+                 cookie: str):
         self.website = website
         self.searchURLPattern = searchURLPattern
         self.itemSelector = itemSelector
         self.linkSelector = linkSelector
         self.titleSelector = titleSelector
+        self.cookie = cookie
 
 
 class SearchResult:
@@ -57,6 +59,10 @@ def search(story: str, config: WebsiteConfig):
                'upgrade-insecure-requests': '1',
                'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
                }
+
+    if config.cookie is not None:
+        print(f'    ->using cookie: {config.cookie}')
+        headers['cookie'] = config.cookie
 
     try:
         data = requests.get(searchURL, headers=headers, timeout=1)
@@ -133,8 +139,11 @@ def main(argv):
     cfgData = loadConfig(configPath)
     configs = []
     for data in cfgData:
+        cookie = None
+        if 'cookie' in data and data['cookie'] is not None:
+            cookie = data['cookie']
         configs.append(WebsiteConfig(data['website'], data['searchURLPattern'],
-                       data['itemSelector'], data['linkSelector'], data['titleSelector']))
+                       data['itemSelector'], data['linkSelector'], data['titleSelector'], cookie))
 
     # For all websites, search / scrap
     story = argv[0]

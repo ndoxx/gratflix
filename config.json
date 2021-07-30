@@ -18,7 +18,8 @@
         "searchURLPattern": "https://123streaming.net/?s={story}",
         "itemSelector": "article.post",
         "linkSelector": "a[href]",
-        "titleSelector": "span.entry-title"
+        "titleSelector": "span.entry-title",
+        "cookie": "_immortal|Arc_nodeId=PpshA1oWdrmH8foeeuciAU"
     },
     {
         "website": "filmstream-vf.com",
@@ -32,6 +33,7 @@
         "searchURLPattern": "https://filmstoon.biz/?do=search&subaction=search&titleonly=3&story={story}",
         "itemSelector": "div.warp_post",
         "linkSelector": "a[href]",
-        "titleSelector": "a span.post-title"
+        "titleSelector": "a span.post-title",
+        "cookie": "PHPSESSID=667e1e78b4e457e85376f7e1346212a4"
     }
 ]
