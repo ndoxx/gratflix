@@ -6,6 +6,7 @@ import json
 import sys
 import unicodedata
 import re
+import os
 from bs4 import BeautifulSoup
 
 
@@ -108,7 +109,10 @@ def sortResults(story: str, results):
 
 def main(argv):
     # Load website configs
-    cfgData = loadConfig("config.json")
+    # Script can be called via a symlink, so we need to be careful with file paths
+    selfdir = os.path.dirname(os.path.realpath(__file__))
+    configPath = os.path.join(selfdir, "config.json")
+    cfgData = loadConfig(configPath)
     configs = []
     for data in cfgData:
         configs.append(WebsiteConfig(data['website'], data['searchURLPattern'],
