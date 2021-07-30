@@ -1,0 +1,37 @@
+[
+    {
+        "website": "filmstoon.biz",
+        "searchURLPattern": "https://filmstoon.biz/?do=search&subaction=search&titleonly=3&story={story}",
+        "itemSelector": "div.warp_post",
+        "linkSelector": "a[href]",
+        "titleSelector": "a span.post-title"
+    },
+    {
+        "website": "french-stream.la",
+        "searchURLPattern": "https://french-stream.la/?do=search&subaction=search&story={story}",
+        "itemSelector": "div.short-in.nl",
+        "linkSelector": "a[href]",
+        "titleSelector": "div.short-title"
+    },
+    {
+        "website": "filmpourvous.com",
+        "searchURLPattern": "https://filmpourvous.com/?s={story}",
+        "itemSelector": "div.ml-item",
+        "linkSelector": "a[href]",
+        "titleSelector": "span.mli-info"
+    },
+    {
+        "website": "123streaming.net",
+        "searchURLPattern": "https://123streaming.net/?s={story}",
+        "itemSelector": "article.post",
+        "linkSelector": "a[href]",
+        "titleSelector": "span.entry-title"
+    },
+    {
+        "website": "filmstream-vf.com",
+        "searchURLPattern": "https://filmstream-vf.com/?s={story}",
+        "itemSelector": "div.ml-item",
+        "linkSelector": "a[href]",
+        "titleSelector": "div.qtip-title"
+    }
+]
