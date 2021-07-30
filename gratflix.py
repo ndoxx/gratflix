@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 
-from termcolor import colored, cprint
 import requests
 import json
 import sys
 import unicodedata
 import re
 import os
+from termcolor import colored, cprint
+from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
 
 
@@ -14,13 +15,13 @@ class WebsiteConfig:
     """Class containing various URLs and selectors needed to do a lookup on a particular site"""
 
     def __init__(self,
-                 website: str,
+                 URL: str,
                  searchURLPattern: str,
                  itemSelector: str,
                  linkSelector: str,
                  titleSelector: str,
                  cookie: str):
-        self.website = website
+        self.URL = URL
         self.searchURLPattern = searchURLPattern
         self.itemSelector = itemSelector
         self.linkSelector = linkSelector
@@ -41,11 +42,16 @@ class SearchResult:
         return f'{self.title} -> {self.URL}'
 
 
+def isAbsolute(url):
+    """Check if a given URL is absolute"""
+    return bool(urlparse(url).netloc)
+
+
 def search(story: str, config: WebsiteConfig):
     """Search a given website for specified movie"""
 
     searchURL = config.searchURLPattern.format(story=story)
-    cprint(f'Searching on {config.website}', 'cyan')
+    cprint(f'Searching on {config.URL}', 'cyan')
 
     headers = {'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
                'accept-language': 'en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7',
@@ -76,7 +82,11 @@ def search(story: str, config: WebsiteConfig):
     for item in soup.select(config.itemSelector):
         link = item.select_one(config.linkSelector)
         title = item.select_one(config.titleSelector)
-        results.append(SearchResult(title.text, link['href']))
+        # If URL is relative, convert to absolute URL
+        movieURL = link['href']
+        if not isAbsolute(movieURL):
+            movieURL = urljoin(config.URL, movieURL)
+        results.append(SearchResult(title.text, movieURL))
 
     return results
 
@@ -142,7 +152,7 @@ def main(argv):
         cookie = None
         if 'cookie' in data and data['cookie'] is not None:
             cookie = data['cookie']
-        configs.append(WebsiteConfig(data['website'], data['searchURLPattern'],
+        configs.append(WebsiteConfig(data['URL'], data['searchURLPattern'],
                        data['itemSelector'], data['linkSelector'], data['titleSelector'], cookie))
 
     # For all websites, search / scrap

@@ -1,20 +1,20 @@
 [
     {
-        "website": "french-stream.la",
+        "URL": "https://french-stream.la",
         "searchURLPattern": "https://french-stream.la/?do=search&subaction=search&story={story}",
         "itemSelector": "div.short-in.nl",
         "linkSelector": "a[href]",
         "titleSelector": "div.short-title"
     },
     {
-        "website": "filmpourvous.com",
+        "URL": "https://filmpourvous.com",
         "searchURLPattern": "https://filmpourvous.com/?s={story}",
         "itemSelector": "div.ml-item",
         "linkSelector": "a[href]",
         "titleSelector": "span.mli-info"
     },
     {
-        "website": "123streaming.net",
+        "URL": "https://123streaming.net",
         "searchURLPattern": "https://123streaming.net/?s={story}",
         "itemSelector": "article.post",
         "linkSelector": "a[href]",
@@ -22,18 +22,25 @@
         "cookie": "_immortal|Arc_nodeId=PpshA1oWdrmH8foeeuciAU"
     },
     {
-        "website": "filmstream-vf.com",
+        "URL": "https://filmstream-vf.com",
         "searchURLPattern": "https://filmstream-vf.com/?s={story}",
         "itemSelector": "div.ml-item",
         "linkSelector": "a[href]",
         "titleSelector": "div.qtip-title"
     },
     {
-        "website": "filmstoon.biz",
+        "URL": "https://filmstoon.biz",
         "searchURLPattern": "https://filmstoon.biz/?do=search&subaction=search&titleonly=3&story={story}",
         "itemSelector": "div.warp_post",
         "linkSelector": "a[href]",
         "titleSelector": "a span.post-title",
         "cookie": "PHPSESSID=667e1e78b4e457e85376f7e1346212a4"
+    },
+    {
+        "URL": "https://www.series-stream.cc",
+        "searchURLPattern": "https://wwv.series-stream.cc/recherche?q={story}",
+        "itemSelector": "div.shortstory.radius-3",
+        "linkSelector": "a.short-images-link",
+        "titleSelector": "div.short-content>h4>a"
     }
 ]
