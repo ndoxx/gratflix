@@ -6,6 +6,7 @@ import sys
 import unicodedata
 import re
 import os
+import argparse
 from termcolor import colored, cprint
 from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
@@ -142,6 +143,12 @@ def sortResults(story: str, results):
 
 
 def main(argv):
+    parser = argparse.ArgumentParser(description='Search for a movie across multiple streaming websites.')
+    parser.add_argument('story', type=str, nargs='?', default=None, help='keywords to be forwarded to the websites search engines')
+    parser.add_argument('-l', '--list', action='store_true', help='display a list of websites stored in config')
+    parser.add_argument('-s', '--site', type=int, help='search on a single website using an index (as displayed in list mode)')
+    args = parser.parse_args(argv)
+
     # Load website configs
     # Script can be called via a symlink, so we need to be careful with file paths
     selfdir = os.path.dirname(os.path.realpath(__file__))
@@ -155,11 +162,30 @@ def main(argv):
         configs.append(WebsiteConfig(data['URL'], data['searchURLPattern'],
                        data['itemSelector'], data['linkSelector'], data['titleSelector'], cookie))
 
-    # For all websites, search / scrap
-    story = argv[0]
+    # List mode: print websites with their respective index and exit
+    if args.list:
+        for idx, config in enumerate(configs):
+            print(f'[{idx}] {config.URL}')
+        return
+
+    # Make sure user did provide search keywords
+    story = args.story
+    if story is None:
+        parser.error('Missing search keywords')
+        return
+
     results = []
-    for config in configs:
-        results = results + search(story, config)
+    numWebsites = len(configs)
+    if args.site is not None:
+        if args.site >= len(configs):
+            print('Website index out of bounds')
+            return
+        results = search(story, configs[args.site])
+        numWebsites = 1
+    else:
+        # For all websites, search / scrap
+        for config in configs:
+            results = results + search(story, config)
 
     # Sort results by relevance
     sorted = sortResults(story, results)
@@ -167,7 +193,7 @@ def main(argv):
     # Display results
     print('\n')
     cprint(
-        f'Found {len(sorted)} results accross {len(configs)} websites:', 'green')
+        f'Found {len(sorted)} results accross {numWebsites} websites:', 'green')
 
     for result in sorted:
         print(result)
