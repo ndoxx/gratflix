@@ -26,7 +26,8 @@
         "searchURLPattern": "https://filmstream-vf.com/?s={story}",
         "itemSelector": "div.ml-item",
         "linkSelector": "a[href]",
-        "titleSelector": "div.qtip-title"
+        "titleSelector": "div.qtip-title",
+        "disabled": true
     },
     {
         "URL": "https://filmstoon.biz",
@@ -34,13 +35,15 @@
         "itemSelector": "div.warp_post",
         "linkSelector": "a[href]",
         "titleSelector": "a span.post-title",
-        "cookie": "PHPSESSID=667e1e78b4e457e85376f7e1346212a4"
+        "cookie": "PHPSESSID=667e1e78b4e457e85376f7e1346212a4",
+        "disabled": true
     },
     {
         "URL": "https://www.series-stream.cc",
         "searchURLPattern": "https://wwv.series-stream.cc/recherche?q={story}",
         "itemSelector": "div.shortstory.radius-3",
         "linkSelector": "a.short-images-link",
-        "titleSelector": "div.short-content>h4>a"
+        "titleSelector": "div.short-content>h4>a",
+        "disabled": true
     }
 ]

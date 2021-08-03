@@ -7,6 +7,7 @@ import unicodedata
 import re
 import os
 import argparse
+import traceback
 from termcolor import colored, cprint
 from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup
@@ -31,7 +32,7 @@ class WebsiteConfig:
 
 
 class SearchResult:
-    """Class to represent a single movie"""
+    """Class to represent a single search result"""
 
     def __init__(self,
                  title: str,
@@ -59,7 +60,7 @@ def search(story: str, config: WebsiteConfig):
                'cache-control': 'no-cache',
                'dnt': '1',
                'pragma': 'no-cache',
-               'referer': 'https://www.google.com',
+               'referer': config.URL,
                'sec-fetch-mode': 'navigate',
                'sec-fetch-site': 'same-origin',
                'sec-fetch-user': '?1',
@@ -75,6 +76,10 @@ def search(story: str, config: WebsiteConfig):
         data = requests.get(searchURL, headers=headers, timeout=1)
     except requests.exceptions.Timeout:
         cprint(f'    ->timeout', 'red')
+        return []
+    except Exception as e:
+        cprint(f'    ->Exception: {e}', 'red')
+        traceback.print_exc()
         return []
 
     soup = BeautifulSoup(data.text, 'html.parser')
@@ -156,6 +161,8 @@ def main(argv):
     cfgData = loadConfig(configPath)
     configs = []
     for data in cfgData:
+        if 'disabled' in data and data['disabled']:
+            continue
         cookie = None
         if 'cookie' in data and data['cookie'] is not None:
             cookie = data['cookie']
