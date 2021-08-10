@@ -3,7 +3,7 @@
         "URL": "https://french-stream.la",
         "searchURLPattern": "https://french-stream.la/?do=search&subaction=search&story={story}",
         "itemSelector": "div.short-in.nl",
-        "linkSelector": "a[href]",
+        "linkSelector": "a.short-poster.img-box.with-mask",
         "titleSelector": "div.short-title"
     },
     {
@@ -45,5 +45,26 @@
         "linkSelector": "a.short-images-link",
         "titleSelector": "div.short-content>h4>a",
         "disabled": true
+    },
+    {
+        "URL": "https://vvw.papystreaming.stream",
+        "searchURLPattern": "https://vvw.papystreaming.stream/?s={story}",
+        "itemSelector": "#content_box>article.latestPost",
+        "linkSelector": "a.post-image",
+        "titleSelector": "header>h2>a"
+    },
+    {
+        "URL": "https://www.cpasmieux.biz",
+        "searchURLPattern": "https://www.cpasmieux.biz/?s={story}",
+        "itemSelector": "#contenedor>div.module>div.content.csearch>div>div>article",
+        "linkSelector": "div.image>div>a",
+        "titleSelector": "div.details>div.title>a"
+    },
+    {
+        "URL": "https://www.voirfilms1.net",
+        "searchURLPattern": "https://www.voirfilms1.net/index.php?do=search&subaction=search&story={story}",
+        "itemSelector": "#dle-content>div.warp_post",
+        "linkSelector": "div>a",
+        "titleSelector": "span.post-title"
     }
 ]
