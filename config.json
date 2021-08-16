@@ -66,5 +66,12 @@
         "itemSelector": "#dle-content>div.warp_post",
         "linkSelector": "div>a",
         "titleSelector": "span.post-title"
+    },
+    {
+        "URL": "https://123movies.gy",
+        "searchURLPattern": "https://123movies.gy/search/{story}",
+        "itemSelector": "div.flw-item",
+        "linkSelector": "div.film-detail>h3>a",
+        "titleSelector": "div.film-detail>h3>a"
     }
 ]
