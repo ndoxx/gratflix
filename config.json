@@ -73,5 +73,19 @@
         "itemSelector": "div.flw-item",
         "linkSelector": "div.film-detail>h3>a",
         "titleSelector": "div.film-detail>h3>a"
+    },
+    {
+        "URL": "https://wwv.33seriestreaming.com",
+        "searchURLPattern": "https://wwv.33seriestreaming.com/?s={story}",
+        "itemSelector": "div.result-item>article",
+        "linkSelector": "div.details>div.title>a",
+        "titleSelector": "div.details>div.title>a"
+    },
+    {
+        "URL": "https://streaminggratuit.vip",
+        "searchURLPattern": "https://streaminggratuit.vip/?s={story}",
+        "itemSelector": "div.ml-item",
+        "linkSelector": "a[href]",
+        "titleSelector": "a>span>h2"
     }
 ]
