@@ -87,5 +87,12 @@
         "itemSelector": "div.ml-item",
         "linkSelector": "a[href]",
         "titleSelector": "a>span>h2"
+    },
+    {
+        "URL": "https://m4uhd.tv/",
+        "searchURLPattern": "https://m4uhd.tv/search/{story}.html",
+        "itemSelector": "div.item",
+        "linkSelector": "div.imagecover>a",
+        "titleSelector": "div.popcontents>div.tiptitle>h4"
     }
 ]
