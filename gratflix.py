@@ -69,16 +69,16 @@ def search(story: str, config: WebsiteConfig):
                }
 
     if config.cookie is not None:
-        print(f'    ->using cookie: {config.cookie}')
+        print(f'    -> using cookie: {config.cookie}')
         headers['cookie'] = config.cookie
 
     try:
         data = requests.get(searchURL, headers=headers, timeout=1)
     except requests.exceptions.Timeout:
-        cprint(f'    ->timeout', 'red')
+        cprint(f'    -> timeout', 'red')
         return []
     except Exception as e:
-        cprint(f'    ->Exception: {e}', 'red')
+        cprint(f'    -> Exception: {e}', 'red')
         traceback.print_exc()
         return []
 
@@ -93,6 +93,10 @@ def search(story: str, config: WebsiteConfig):
         if not isAbsolute(movieURL):
             movieURL = urljoin(config.URL, movieURL)
         results.append(SearchResult(title.text, movieURL))
+
+    numres = len(results)
+    if numres:
+        print(f'    -> {numres} result{"s" if numres>1 else ""}')
 
     return results
 
