@@ -1,0 +1,98 @@
+[
+    {
+        "URL": "https://french-stream.la",
+        "searchURLPattern": "https://french-stream.la/?do=search&subaction=search&story={story}",
+        "itemSelector": "div.short-in.nl",
+        "linkSelector": "a.short-poster.img-box.with-mask",
+        "titleSelector": "div.short-title"
+    },
+    {
+        "URL": "https://filmpourvous.com",
+        "searchURLPattern": "https://filmpourvous.com/?s={story}",
+        "itemSelector": "div.ml-item",
+        "linkSelector": "a[href]",
+        "titleSelector": "span.mli-info"
+    },
+    {
+        "URL": "https://123streaming.net",
+        "searchURLPattern": "https://123streaming.net/?s={story}",
+        "itemSelector": "article.post",
+        "linkSelector": "a[href]",
+        "titleSelector": "span.entry-title",
+        "cookie": "_immortal|Arc_nodeId=PpshA1oWdrmH8foeeuciAU"
+    },
+    {
+        "URL": "https://filmstream-vf.com",
+        "searchURLPattern": "https://filmstream-vf.com/?s={story}",
+        "itemSelector": "div.ml-item",
+        "linkSelector": "a[href]",
+        "titleSelector": "div.qtip-title",
+        "disabled": true
+    },
+    {
+        "URL": "https://filmstoon.biz",
+        "searchURLPattern": "https://filmstoon.biz/?do=search&subaction=search&titleonly=3&story={story}",
+        "itemSelector": "div.warp_post",
+        "linkSelector": "a[href]",
+        "titleSelector": "a span.post-title",
+        "cookie": "PHPSESSID=667e1e78b4e457e85376f7e1346212a4",
+        "disabled": true
+    },
+    {
+        "URL": "https://www.series-stream.cc",
+        "searchURLPattern": "https://wwv.series-stream.cc/recherche?q={story}",
+        "itemSelector": "div.shortstory.radius-3",
+        "linkSelector": "a.short-images-link",
+        "titleSelector": "div.short-content>h4>a",
+        "disabled": true
+    },
+    {
+        "URL": "https://vvw.papystreaming.stream",
+        "searchURLPattern": "https://vvw.papystreaming.stream/?s={story}",
+        "itemSelector": "#content_box>article.latestPost",
+        "linkSelector": "a.post-image",
+        "titleSelector": "header>h2>a"
+    },
+    {
+        "URL": "https://www.cpasmieux.biz",
+        "searchURLPattern": "https://www.cpasmieux.biz/?s={story}",
+        "itemSelector": "#contenedor>div.module>div.content.csearch>div>div>article",
+        "linkSelector": "div.image>div>a",
+        "titleSelector": "div.details>div.title>a"
+    },
+    {
+        "URL": "https://www.voirfilms1.net",
+        "searchURLPattern": "https://www.voirfilms1.net/index.php?do=search&subaction=search&story={story}",
+        "itemSelector": "#dle-content>div.warp_post",
+        "linkSelector": "div>a",
+        "titleSelector": "span.post-title"
+    },
+    {
+        "URL": "https://123movies.gy",
+        "searchURLPattern": "https://123movies.gy/search/{story}",
+        "itemSelector": "div.flw-item",
+        "linkSelector": "div.film-detail>h3>a",
+        "titleSelector": "div.film-detail>h3>a"
+    },
+    {
+        "URL": "https://wwv.33seriestreaming.com",
+        "searchURLPattern": "https://wwv.33seriestreaming.com/?s={story}",
+        "itemSelector": "div.result-item>article",
+        "linkSelector": "div.details>div.title>a",
+        "titleSelector": "div.details>div.title>a"
+    },
+    {
+        "URL": "https://streaminggratuit.vip",
+        "searchURLPattern": "https://streaminggratuit.vip/?s={story}",
+        "itemSelector": "div.ml-item",
+        "linkSelector": "a[href]",
+        "titleSelector": "a>span>h2"
+    },
+    {
+        "URL": "https://m4uhd.tv/",
+        "searchURLPattern": "https://m4uhd.tv/search/{story}.html",
+        "itemSelector": "div.item",
+        "linkSelector": "div.imagecover>a",
+        "titleSelector": "div.popcontents>div.tiptitle>h4"
+    }
+]

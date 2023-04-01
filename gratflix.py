@@ -22,6 +22,7 @@ class WebsiteConfig:
                  itemSelector: str,
                  linkSelector: str,
                  titleSelector: str,
+                 options: str,
                  cookie: str):
         self.URL = URL
         self.searchURLPattern = searchURLPattern
@@ -29,6 +30,12 @@ class WebsiteConfig:
         self.linkSelector = linkSelector
         self.titleSelector = titleSelector
         self.cookie = cookie
+
+        if options:
+            options = options.split()
+            self.hyphenize = True if 'hyphenize' in options else False
+        else:
+            self.hyphenize = False
 
 
 class SearchResult:
@@ -51,6 +58,9 @@ def isAbsolute(url):
 
 def search(story: str, config: WebsiteConfig):
     """Search a given website for specified movie"""
+
+    if config.hyphenize:
+        story = '-'.join(story.split()).lower()
 
     searchURL = config.searchURLPattern.format(story=story)
     cprint(f'Searching on {config.URL}', 'cyan')
@@ -170,8 +180,11 @@ def main(argv):
         cookie = None
         if 'cookie' in data and data['cookie'] is not None:
             cookie = data['cookie']
+        options = None
+        if 'options' in data:
+            options = data['options']
         configs.append(WebsiteConfig(data['URL'], data['searchURLPattern'],
-                       data['itemSelector'], data['linkSelector'], data['titleSelector'], cookie))
+                       data['itemSelector'], data['linkSelector'], data['titleSelector'], options, cookie))
 
     # List mode: print websites with their respective index and exit
     if args.list:
@@ -204,7 +217,7 @@ def main(argv):
     # Display results
     print('\n')
     cprint(
-        f'Found {len(sorted)} results accross {numWebsites} websites:', 'green')
+        f'Found {len(sorted)} results across {numWebsites} websites:', 'green')
 
     for result in sorted:
         print(result)
